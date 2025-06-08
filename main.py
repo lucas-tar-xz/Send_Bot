@@ -31,15 +31,7 @@ def inline_query(query):
                 parse_mode="Markdown"),
             reply_markup=markup
         )
-        result2 = InlineQueryResultArticle(
-            id="2",
-            title="Сделка завершена",
-            description="Сделка завершена",
-            input_message_content=InputTextMessageContent(
-                f"#сделказавершена\nБуду очень благодарен за *отзыв с юзернеймом и скриншотом транзакции*",
-                parse_mode="Markdown")
-        )
-        bot.answer_inline_query(query.id, [result1, result2], cache_time=1)
+        bot.answer_inline_query(query.id, [result1], cache_time=1)
     else:
         try:
             amnt = float(query.query)
@@ -87,7 +79,7 @@ def inline_query(query):
                     input_message_content=InputTextMessageContent(
                         f"Сумма: `{amnt*102/100}` TON\n\n{text}",
                         parse_mode="Markdown"),
-                    reply_markup=markup1
+                    reply_markup=markup2
                 )
                 bot.answer_inline_query(query.id, [result1, result2], cache_time=1)
         except: pass
